@@ -1,0 +1,4 @@
+server:
+  port: 9080  # Puerto en el que se ejecutará tu microservicio "Register".
+
+
