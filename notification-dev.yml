@@ -1,0 +1,6 @@
+property: "Configuracion de Microservicio Notification"
+
+server:
+  port: 9082  # Puerto en el que se ejecutará tu microservicio "Register".
+
+

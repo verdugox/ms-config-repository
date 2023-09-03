@@ -1,0 +1,6 @@
+property: "Configuracion de Microservicio Bootcoin"
+
+server:
+  port: 9085  # Puerto en el que se ejecutará tu microservicio "Register".
+
+

@@ -1,0 +1,6 @@
+property: "Configuracion de Microservicio Transsaction"
+
+server:
+  port: 9084  # Puerto en el que se ejecutará tu microservicio "Transaction".
+
+
