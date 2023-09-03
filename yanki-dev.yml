@@ -1,0 +1,6 @@
+property: "Configuracion de Microservicio Wallet Yanki"
+
+server:
+  port: 9081  # Puerto en el que se ejecutará tu microservicio "Register".
+
+
