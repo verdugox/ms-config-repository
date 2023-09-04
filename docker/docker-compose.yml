@@ -1,0 +1,90 @@
+version: '3'
+services:
+  config-server:
+    image: verdugox/ms-config-server:1.0
+    ports:
+      - "8888:8888"
+    environment:
+      SPRING_CLOUD_CONFIG_SERVER_GIT_URI: https://github.com/verdugox/ms-config-repository.git
+    volumes:
+      - ./config-server:/config
+
+  eureka-server:
+    image: verdugox/ms-eureka-server:1.0
+    ports:
+      - "8761:8761"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - config-server
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  ms-yanki:
+    image: verdugox/ms-yanki:1.0
+    ports:
+      - "9081:9081"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - config-server
+      - eureka-server
+      - redis
+
+  ms-transsaction:
+    image: verdugox/ms-transsaction:1.0
+    ports:
+      - "9084:9084"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - config-server
+      - eureka-server
+      - redis
+
+  ms-register:
+    image: verdugox/ms-register:1.0
+    ports:
+      - "9080:9080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - config-server
+      - eureka-server
+      - redis
+
+  ms-boot-coin:
+    image: verdugox/ms-boot-coin:1.0
+    ports:
+      - "9085:9085"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - config-server
+      - eureka-server
+      - redis
+
+  ms-notification:
+    image: verdugox/ms-notification:1.0
+    ports:
+      - "9082:9082"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - config-server
+      - eureka-server
+      - redis
+
+  ms-banks:
+    image: verdugox/ms-banks:1.0
+    ports:
+      - "9083:9083"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - config-server
+      - eureka-server
+      - redis
