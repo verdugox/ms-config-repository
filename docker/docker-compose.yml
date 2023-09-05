@@ -8,6 +8,8 @@ services:
       SPRING_CLOUD_CONFIG_SERVER_GIT_URI: https://github.com/verdugox/ms-config-repository.git
     volumes:
       - ./config-server:/config
+    networks:
+      - red_pfm_verdugox
 
   eureka-server:
     image: verdugox/ms-eureka-server:1.0
@@ -17,15 +19,22 @@ services:
       SPRING_PROFILES_ACTIVE: docker
     depends_on:
       - config-server
+    networks:
+      - red_pfm_verdugox
 
   redis:
     image: redis:latest
     ports:
       - "6379:6379"
+    networks:
+      - red_pfm_verdugox
+
   mongo:
     image: mongo
     ports:
       - "27018:27017"
+    networks:
+      - red_pfm_verdugox
 
   ms-yanki:
     image: verdugox/ms-yanki:1.0
@@ -37,6 +46,8 @@ services:
       - config-server
       - eureka-server
       - redis
+    networks:
+      - red_pfm_verdugox
 
   ms-transsaction:
     image: verdugox/ms-transsaction:1.0
@@ -48,6 +59,8 @@ services:
       - config-server
       - eureka-server
       - redis
+    networks:
+      - red_pfm_verdugox
 
   ms-register:
     image: verdugox/ms-register:1.0
@@ -59,6 +72,8 @@ services:
       - config-server
       - eureka-server
       - redis
+    networks:
+      - red_pfm_verdugox
 
   ms-boot-coin:
     image: verdugox/ms-boot-coin:1.0
@@ -70,6 +85,8 @@ services:
       - config-server
       - eureka-server
       - redis
+    networks:
+      - red_pfm_verdugox
 
   ms-notification:
     image: verdugox/ms-notification:1.0
@@ -81,6 +98,8 @@ services:
       - config-server
       - eureka-server
       - redis
+    networks:
+      - red_pfm_verdugox
 
   ms-banks:
     image: verdugox/ms-banks:1.0
@@ -92,3 +111,5 @@ services:
       - config-server
       - eureka-server
       - redis
+    networks:
+      - red_pfm_verdugox

@@ -1,6 +1,6 @@
-property: "Configuracion de Microservicio Wallet Yanki"
+property: "Configuracion de Microservicio de Eureka"
 
 server:
-  port: 8761  # Puerto en el que se ejecutará tu microservicio "Register".
+  port: 8761  # Puerto en el que se ejecutará tu microservicio "Eureka".
 
 
